@@ -1,0 +1,77 @@
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class HashMap implements Iterable<HashMap.Entity> {
+    private static final int INIT_BUCKET_COUNT = 16;
+    private Bucket[] buckets;
+    public HashMap() {
+    buckets = new Bucket[INIT_BUCKET_COUNT];
+}
+
+// ... остальные методы класса HashMap ...
+// Метод добавления элемента в структуру данных
+public void put(K key, V value) {
+// ... добавление элемента в таблицу ...
+}
+// Метод удаления элемента по ключу
+public void remove(K key) {
+// ... удаление элемента из таблицы ...
+}
+// Метод поиска элемента по ключу
+public V get(K key) {
+// ... поиск элемента в таблице ...
+}
+// Метод для перебора элементов структуры данных
+@Override
+public Iterator<Entity> iterator() {
+return new HashMapIterator();
+}
+// Внутренний класс, реализующий интерфейс Iterator
+private class HashMapIterator implements Iterator<Entity> {
+private int currentBucketIndex;
+private Entry currentEntry;
+private Entry nextEntry;
+public HashMapIterator() {
+currentBucketIndex = 0;
+currentEntry = null;
+nextEntry = null;
+findNextEntry();
+}
+// Метод проверки наличия следующего элемента
+@Override
+public boolean hasNext() {
+return nextEntry != null;
+}
+// Метод получения следующего элемента
+@Override
+public Entity next() {
+    currentEntry = nextEntry;
+    findNextEntry();
+    return currentEntry;
+    }
+    // Метод для поиска следующего элемента
+    private void findNextEntry() {
+    // ... поиск следующего элемента ...
+    }
+    }
+    // Внутренний класс для представления элементов внутри структуры данных
+    class Entry {
+    K key;
+    V value;
+    public Entry(K key, V value) {
+    this.key = key;
+    this.value = value;
+    }
+    }
+    }
+    //Теперь, чтобы перебрать все элементы нашей структуры данных, можно
+    //использовать цикл foreach:
+    HashMap map = new HashMap();
+    map.put("One", 1);
+    map.put("Two", 2);
+    map.put("Three", 3);
+    for (HashMap.Entry entry : map) {
+    String key = entry.key;
+    Integer value = entry.value;
+    // ... выполнение операций с ключом и значением ...
+    }
